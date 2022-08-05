@@ -20,6 +20,7 @@ import axios from "axios";
 
 const CreateCardPage = () => {
   const toast = useToast();
+  const [isLoading, setIsLoading] = useState(false);
   const [formJSON, setFormJSON] = useState({
     for: "",
     cards: [
@@ -102,6 +103,7 @@ const CreateCardPage = () => {
     e.preventDefault();
     // console.log(formJSON);
     try {
+      setIsLoading(true);
       const {
         data
       } = await axios.post(
@@ -124,6 +126,7 @@ const CreateCardPage = () => {
         duration: 3000,
         position: "top"
       });
+      setIsLoading(false);
     }
   };
 
@@ -196,16 +199,29 @@ const CreateCardPage = () => {
                 type="color"
               />
             </FormControl>
-            <Button
-              size="md"
-              type="submit"
-              w="full"
-              mt="12"
-              colorScheme="teal"
-              variant="solid"
-            >
-              Simpan
-            </Button>
+            {isLoading ? (
+              <Button
+                size="md"
+                w="full"
+                mt="12"
+                colorScheme="teal"
+                variant="solid"
+                disabled
+              >
+                Submitting...
+              </Button>
+            ) : (
+              <Button
+                size="md"
+                type="submit"
+                w="full"
+                mt="12"
+                colorScheme="teal"
+                variant="solid"
+              >
+                Simpan
+              </Button>
+            )}
           </form>
         </Box>
       </Container>

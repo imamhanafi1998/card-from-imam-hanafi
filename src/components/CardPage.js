@@ -3,7 +3,7 @@ import { useSprings, animated, to as interpolate } from "react-spring";
 import { useGesture } from "react-use-gesture";
 import "../styles/CardPageCss.css";
 import axios from "axios";
-import { Box, Center, Text, Heading, Highlight } from "@chakra-ui/react";
+import { Box, Badge, Center, Text, Heading, Highlight } from "@chakra-ui/react";
 import Page from "./Page";
 const CardPage = ({ match }) => {
   const getCardsDB = async () => {
@@ -131,22 +131,6 @@ const CardPage = ({ match }) => {
               <Page text={cardsDBData[i].card} />
             </animated.div>
           </animated.div>
-          // <Heading
-          //   paddingBottom="3"
-          //   w="full"
-          //   pos="absolute"
-          //   bottom="0"
-          //   align="center"
-          //   size="md"
-          // >
-          //   {forWho}
-          //   {/* <Highlight
-          //     query={forWho}
-          //     styles={{ px: "2", py: "1", rounded: "md", bg: "yellow.300" }}
-          //   >
-          //     {`For : ${forWho}`}
-          //   </Highlight> */}
-          // </Heading>
         ))}
         <Heading
           paddingBottom="3"
@@ -155,14 +139,12 @@ const CardPage = ({ match }) => {
           bottom="0"
           align="center"
           size="md"
+          color="white"
         >
-          {forWho}
-          {/* <Highlight
-            query={forWho}
-            styles={{ px: "2", py: "1", rounded: "md", bg: "yellow.300" }}
-          >
-            {`For : ${forWho}`}
-          </Highlight> */}
+          {/* {forWho} */}
+          <Badge colorScheme="blue" fontSize="xl">
+            {forWho}
+          </Badge>
         </Heading>
       </Box>
     </>
