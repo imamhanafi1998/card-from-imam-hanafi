@@ -1,5 +1,6 @@
 import CardPage from "./components/CardPage";
 import HomePage from "./components/HomePage";
+import CreateCardPage from "./components/CreateCardPage";
 
 import { Router, Route, Switch } from "react-router-dom";
 import History from "./components/History";
@@ -9,6 +10,12 @@ const AppRoutes = [
     path: "/",
     name: "Home Page",
     Component: HomePage,
+    exact: true
+  },
+  {
+    path: "/create",
+    name: "Create Card Page",
+    Component: CreateCardPage,
     exact: true
   },
   {

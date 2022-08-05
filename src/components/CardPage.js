@@ -8,9 +8,9 @@ import Page from "./Page";
 const CardPage = ({ match }) => {
   const getCardsDB = async () => {
     try {
-      // const { data } = await axios.get(
-      //   `https://sidik-backend.netlify.app/.netlify/functions/api/posts/t/1`
-      // );
+      const { data } = await axios.get(
+        `https://elaborate-twilight-c60174.netlify.app/.netlify/functions/api/card/${match.params.someone}`
+      );
       let dataDummy = {
         for: match.params.someone,
         cards: [
@@ -36,12 +36,16 @@ const CardPage = ({ match }) => {
       //   }
       // }
       // setCardsDBData(data.posts);
-      setCardsDBData(dataDummy.cards.reverse());
-      setForWho(dataDummy.for);
-      setBgCard(dataDummy.bgcard);
-      setBgCode(dataDummy.bgcode);
+
+      // console.log(data);
+
+      setCardsDBData(data.card.cards.reverse());
+      setForWho(data.card.for);
+      setBgCard(data.card.bgCard);
+      setBgCode(data.card.bgCode);
       setIsDone(true);
     } catch (error) {
+      console.log("woy error");
       console.error(error);
     }
   };
@@ -106,30 +110,44 @@ const CardPage = ({ match }) => {
   return (
     <>
       <Box id="card-container" bg={bgCode}>
-        {cardsDBData.length > 0 &&
-          isDone &&
-          props.map(({ x, y, rot, scale }, i) => (
+        {props.map(({ x, y, rot, scale }, i) => (
+          <animated.div
+            key={i}
+            style={{
+              transform: interpolate(
+                [x, y],
+                (x, y) => `translate3d(${x}px,${y}px,0)`
+              )
+            }}
+          >
             <animated.div
-              key={i}
+              {...bind(i)}
               style={{
-                transform: interpolate(
-                  [x, y],
-                  (x, y) => `translate3d(${x}px,${y}px,0)`
-                )
+                transform: interpolate([rot, scale], trans),
+                backgroundImage: `linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)), url(${bgCard})`,
+                backgroundSize: "cover"
               }}
             >
-              <animated.div
-                {...bind(i)}
-                style={{
-                  transform: interpolate([rot, scale], trans),
-                  backgroundImage: `linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)), url(${bgCard})`,
-                  backgroundSize: "cover"
-                }}
-              >
-                <Page text={cardsDBData[i]} />
-              </animated.div>
+              <Page text={cardsDBData[i].card} />
             </animated.div>
-          ))}
+          </animated.div>
+          // <Heading
+          //   paddingBottom="3"
+          //   w="full"
+          //   pos="absolute"
+          //   bottom="0"
+          //   align="center"
+          //   size="md"
+          // >
+          //   {forWho}
+          //   {/* <Highlight
+          //     query={forWho}
+          //     styles={{ px: "2", py: "1", rounded: "md", bg: "yellow.300" }}
+          //   >
+          //     {`For : ${forWho}`}
+          //   </Highlight> */}
+          // </Heading>
+        ))}
         <Heading
           paddingBottom="3"
           w="full"
@@ -138,12 +156,13 @@ const CardPage = ({ match }) => {
           align="center"
           size="md"
         >
-          <Highlight
+          {forWho}
+          {/* <Highlight
             query={forWho}
             styles={{ px: "2", py: "1", rounded: "md", bg: "yellow.300" }}
           >
             {`For : ${forWho}`}
-          </Highlight>
+          </Highlight> */}
         </Heading>
       </Box>
     </>
