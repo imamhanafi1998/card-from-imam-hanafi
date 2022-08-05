@@ -219,7 +219,7 @@ const CreateCardPage = () => {
                 colorScheme="teal"
                 variant="solid"
               >
-                Simpan
+                Submit
               </Button>
             )}
           </form>
