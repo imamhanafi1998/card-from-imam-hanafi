@@ -131,7 +131,8 @@ const CardPageForAulia = ({ match }) => {
               <animated.div
                 {...bind(i)}
                 style={{
-                  transform: interpolate([rot, scale], trans)
+                  transform: interpolate([rot, scale], trans),
+                  borderRadius: "6%"
                 }}
               >
                 <Page
@@ -154,7 +155,7 @@ const CardPageForAulia = ({ match }) => {
           color="white"
         >
           {/* {forWho} */}
-          <Badge colorScheme="blue" fontSize="xl">
+          <Badge colorScheme="orange" fontSize="xl">
             {forWho}
           </Badge>
         </Heading>

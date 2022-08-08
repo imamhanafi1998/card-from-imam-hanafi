@@ -9,9 +9,10 @@ const Page = ({
   bg_box = "lightblue"
 }) => {
   return (
-    <Center h="full" p="5" className="card-container-inside">
+    <Center h="full" p="5" className="card-container-inside" rounded="xl">
       <Box>
         <Image
+          rounded="xl"
           draggable={false}
           className="card-image-inside"
           src={image}
