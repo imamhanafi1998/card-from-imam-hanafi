@@ -10,7 +10,13 @@ import {
   Text,
   Textarea,
   Flex,
-  useToast
+  useToast,
+  Slider,
+  SliderMark,
+  SliderTrack,
+  SliderThumb,
+  SliderFilledTrack,
+  Tooltip
 } from "@chakra-ui/react";
 import { IconButton } from "@chakra-ui/react";
 import { AddIcon, MinusIcon } from "@chakra-ui/icons";
@@ -32,8 +38,22 @@ const CreateCardPage = () => {
       { card: "" }
     ],
     bgCard: "",
-    bgCode: "#000000"
+    bgCode: "#000000",
+    oppacity: 0.05,
+    textColor: "black",
+    bgBox: "black"
   });
+
+  const [sliderValue, setSliderValue] = React.useState(5);
+  const [showTooltip, setShowTooltip] = React.useState(false);
+
+  const oppacityChangeHandler = (oppacity) => {
+    setSliderValue(oppacity);
+    // console.log(oppacity * 0.01);
+    const newFormJSON = { ...formJSON };
+    newFormJSON.oppacity = oppacity * 0.01;
+    setFormJSON(newFormJSON);
+  };
 
   const cardChangeHandler = (e, cardIndex) => {
     const newFormJSON = { ...formJSON };
@@ -99,11 +119,23 @@ const CreateCardPage = () => {
     setFormJSON(newFormJSON);
   };
 
+  const textColorChangeHandler = (e) => {
+    const newFormJSON = { ...formJSON };
+    newFormJSON.textColor = e.target.value;
+    setFormJSON(newFormJSON);
+  };
+
+  const boxColorChangeHandler = (e) => {
+    const newFormJSON = { ...formJSON };
+    newFormJSON.bgBox = e.target.value;
+    setFormJSON(newFormJSON);
+  };
+
   const submitHandler = async (e) => {
     e.preventDefault();
-    // console.log(formJSON);
     try {
       setIsLoading(true);
+      // console.log(formJSON);
       const {
         data
       } = await axios.post(
@@ -196,6 +228,59 @@ const CreateCardPage = () => {
               <Input
                 variant="outline"
                 onChange={bgCodeChangeHandler}
+                type="color"
+              />
+            </FormControl>
+            <FormControl mt="4" id="oppacity" isRequired>
+              <FormLabel>Image Oppacity</FormLabel>
+              <Slider
+                step={1}
+                id="slider"
+                defaultValue={5}
+                min={0}
+                max={100}
+                colorScheme="teal"
+                onChange={(v) => oppacityChangeHandler(v)}
+                onMouseEnter={() => setShowTooltip(true)}
+                onMouseLeave={() => setShowTooltip(false)}
+              >
+                <SliderMark value={25} mt="1" ml="-2.5" fontSize="sm">
+                  25%
+                </SliderMark>
+                <SliderMark value={50} mt="1" ml="-2.5" fontSize="sm">
+                  50%
+                </SliderMark>
+                <SliderMark value={75} mt="1" ml="-2.5" fontSize="sm">
+                  75%
+                </SliderMark>
+                <SliderTrack>
+                  <SliderFilledTrack />
+                </SliderTrack>
+                <Tooltip
+                  hasArrow
+                  bg="teal.500"
+                  color="white"
+                  placement="top"
+                  isOpen={showTooltip}
+                  label={`${sliderValue}%`}
+                >
+                  <SliderThumb bg="teal" />
+                </Tooltip>
+              </Slider>
+            </FormControl>
+            <FormControl mt="6" id="text-color">
+              <FormLabel>Text Card Color</FormLabel>
+              <Input
+                variant="outline"
+                onChange={textColorChangeHandler}
+                type="color"
+              />
+            </FormControl>
+            <FormControl mt="4" id="box-color">
+              <FormLabel>Text Box Color</FormLabel>
+              <Input
+                variant="outline"
+                onChange={boxColorChangeHandler}
                 type="color"
               />
             </FormControl>

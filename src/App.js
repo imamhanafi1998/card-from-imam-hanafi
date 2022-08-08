@@ -1,6 +1,7 @@
 import CardPage from "./components/CardPage";
 import HomePage from "./components/HomePage";
 import CreateCardPage from "./components/CreateCardPage";
+import CardPageForAulia from "./components/CardPageForAulia";
 
 import { Router, Route, Switch } from "react-router-dom";
 import History from "./components/History";
@@ -22,6 +23,12 @@ const AppRoutes = [
     path: "/for/:someone",
     name: "Card Page",
     Component: CardPage,
+    exact: true
+  },
+  {
+    path: "/for-aulia",
+    name: "Card Page For Aulia",
+    Component: CardPageForAulia,
     exact: true
   }
 ];
