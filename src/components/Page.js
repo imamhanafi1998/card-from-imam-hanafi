@@ -12,6 +12,7 @@ const Page = ({
     <Center h="full" p="5" className="card-container-inside">
       <Box>
         <Image
+          draggable={false}
           className="card-image-inside"
           src={image}
           alt="Dan Abramov"

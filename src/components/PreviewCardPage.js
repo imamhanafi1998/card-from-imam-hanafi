@@ -2,49 +2,21 @@ import React, { useState, useEffect } from "react";
 import { useSprings, animated, to as interpolate } from "react-spring";
 import { useGesture } from "react-use-gesture";
 import "../styles/CardPageCss.css";
-import axios from "axios";
 import { Box, Badge, Heading } from "@chakra-ui/react";
 import Page from "./Page";
-const CardPageForAulia = ({ match }) => {
-  const getCardsDB = async () => {
+const PreviewCardPage = ({ json }) => {
+  const getCardsDB = async (incomingData) => {
     try {
-      const { data } = await axios.get(
-        `https://elaborate-twilight-c60174.netlify.app/.netlify/functions/api/card/${match.params.someone}`
-      );
-      // let dataDummy = {
-      //   card: {
-      //     _id: "62ed27fdff1d1a000966777d",
-      //     for: "Huki",
-      //     cards: [
-      //       { _id: "62ed27fdff1d1a000966777e", card: "アドバイス踏み気温ふ" },
-      //       {
-      //         _id: "62ed27fdff1d1a000966777f",
-      //         card: "腐女子女子高生飲まどう"
-      //       },
-      //       { _id: "62ed27fdff1d1a0009667780", card: "Uqhskwkw sjwbs" },
-      //       { _id: "62ed27fdff1d1a0009667781", card: "Bsisbw-isnw sjqk" },
-      //       { _id: "62ed27fdff1d1a0009667782", card: "Bsiskqndiw jskww" },
-      //       { _id: "62ed27fdff1d1a0009667783", card: "Baiansbw wus wiw q" }
-      //     ],
-      //     bgCard:
-      //       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNKzOvBbYm1k_z4GVdp42qKprJCqnEqrFHiA&usqp=CAU",
-      //     bgCode: "#ffff00",
-      //     oppacity: 0.3,
-      //     textColor: "#ff7373",
-      //     bgBox: "#ffff00",
-      //     createdAt: "2022-08-05T14:23:57.257Z",
-      //     updatedAt: "2022-08-05T14:23:57.257Z",
-      //     __v: 0
-      //   }
-      // };
+      let dataDummy = { ...json };
+      console.log(dataDummy);
 
-      setCardsDBData(data.card.cards.reverse());
-      setForWho(data.card.for);
-      setBgCard(data.card.bgCard);
-      setBgCode(data.card.bgCode);
-      setOppacity(data.card.oppacity);
-      setTextColor(data.card.textColor);
-      setBgBox(data.card.bgBox);
+      setCardsDBData(dataDummy.cards.reverse());
+      setForWho(dataDummy.for);
+      setBgCard(dataDummy.bgCard);
+      setBgCode(dataDummy.bgCode);
+      setOppacity(dataDummy.oppacity);
+      setTextColor(dataDummy.textColor);
+      setBgBox(dataDummy.bgBox);
       setIsDone(true);
     } catch (error) {
       console.log("woy error");
@@ -54,7 +26,7 @@ const CardPageForAulia = ({ match }) => {
 
   useEffect(() => {
     getCardsDB();
-    // console.log(match);
+    // console.log(json);
   }, []);
 
   const [cardsDBData, setCardsDBData] = useState([]);
@@ -115,7 +87,7 @@ const CardPageForAulia = ({ match }) => {
   );
   return (
     <>
-      <Box className="card-container" bg={bgCode}>
+      <Box className="card-container-preview" bg={bgCode}>
         {isDone &&
           props.map(({ x, y, rot, scale }, i) => (
             <animated.div
@@ -163,4 +135,4 @@ const CardPageForAulia = ({ match }) => {
   );
 };
 
-export default CardPageForAulia;
+export default PreviewCardPage;

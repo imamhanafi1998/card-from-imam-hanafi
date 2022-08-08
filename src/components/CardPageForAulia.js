@@ -115,7 +115,7 @@ const CardPageForAulia = ({ match }) => {
   );
   return (
     <>
-      <Box id="card-container" bg={bgCode}>
+      <Box className="card-container" bg={bgCode}>
         {isDone &&
           props.map(({ x, y, rot, scale }, i) => (
             <animated.div

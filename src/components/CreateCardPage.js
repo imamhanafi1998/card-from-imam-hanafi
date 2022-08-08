@@ -16,15 +16,25 @@ import {
   SliderTrack,
   SliderThumb,
   SliderFilledTrack,
-  Tooltip
+  Tooltip,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure
 } from "@chakra-ui/react";
 import { IconButton } from "@chakra-ui/react";
-import { AddIcon, MinusIcon } from "@chakra-ui/icons";
+import { AddIcon, MinusIcon, ExternalLinkIcon } from "@chakra-ui/icons";
+import PreviewCardPage from "./PreviewCardPage";
 
 import History from "./History";
 import axios from "axios";
 
 const CreateCardPage = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const toast = useToast();
   const [isLoading, setIsLoading] = useState(false);
   const [formJSON, setFormJSON] = useState({
@@ -129,6 +139,12 @@ const CreateCardPage = () => {
     const newFormJSON = { ...formJSON };
     newFormJSON.bgBox = e.target.value;
     setFormJSON(newFormJSON);
+  };
+
+  const previewHandler = () => {
+    console.log({ ...formJSON });
+    onOpen();
+    // window.open(`/preview/${formJSON}`, "_blank");
   };
 
   const submitHandler = async (e) => {
@@ -244,14 +260,11 @@ const CreateCardPage = () => {
                 onMouseEnter={() => setShowTooltip(true)}
                 onMouseLeave={() => setShowTooltip(false)}
               >
-                <SliderMark value={25} mt="1" ml="-2.5" fontSize="sm">
-                  25%
+                <SliderMark value={5} mt="1" ml="-5" fontSize="sm">
+                  Fade
                 </SliderMark>
-                <SliderMark value={50} mt="1" ml="-2.5" fontSize="sm">
-                  50%
-                </SliderMark>
-                <SliderMark value={75} mt="1" ml="-2.5" fontSize="sm">
-                  75%
+                <SliderMark value={95} mt="1" ml="-3" fontSize="sm">
+                  Solid
                 </SliderMark>
                 <SliderTrack>
                   <SliderFilledTrack />
@@ -284,11 +297,22 @@ const CreateCardPage = () => {
                 type="color"
               />
             </FormControl>
+            <Button
+              size="md"
+              w="full"
+              mt="12"
+              colorScheme="blue"
+              variant="solid"
+              rightIcon={<ExternalLinkIcon />}
+              onClick={() => previewHandler()}
+            >
+              Preview
+            </Button>
             {isLoading ? (
               <Button
                 size="md"
                 w="full"
-                mt="12"
+                mt="4"
                 colorScheme="teal"
                 variant="solid"
                 disabled
@@ -300,7 +324,7 @@ const CreateCardPage = () => {
                 size="md"
                 type="submit"
                 w="full"
-                mt="12"
+                mt="4"
                 colorScheme="teal"
                 variant="solid"
               >
@@ -310,6 +334,20 @@ const CreateCardPage = () => {
           </form>
         </Box>
       </Container>
+      <Modal isOpen={isOpen} onClose={onClose} size="full">
+        <ModalOverlay />
+        <ModalContent>
+          <ModalBody>
+            <PreviewCardPage json={formJSON} />
+          </ModalBody>
+
+          <ModalFooter>
+            <Button colorScheme="red" onClick={onClose} size="sm">
+              Close
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </Box>
   );
 };
