@@ -10,7 +10,7 @@ const PreviewCardPage = ({ json }) => {
       let dataDummy = { ...json };
       console.log(dataDummy);
 
-      setCardsDBData(dataDummy.cards.reverse());
+      setCardsDBData(dataDummy.cards);
       setForWho(dataDummy.for);
       setBgCard(dataDummy.bgCard);
       setBgCode(dataDummy.bgCode);
