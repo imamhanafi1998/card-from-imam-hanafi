@@ -2,7 +2,15 @@ import React, { useState, useEffect } from "react";
 import { useSprings, animated, to as interpolate } from "react-spring";
 import { useGesture } from "react-use-gesture";
 import "../styles/CardPageCss.css";
-import { Box, Badge, Heading } from "@chakra-ui/react";
+import {
+  Box,
+  Badge,
+  Heading,
+  Center,
+  Image,
+  Text,
+  useToast
+} from "@chakra-ui/react";
 import Page from "./Page";
 const PreviewCardPage = ({ json }) => {
   const getCardsDB = async (incomingData) => {
@@ -11,13 +19,36 @@ const PreviewCardPage = ({ json }) => {
       console.log(dataDummy);
 
       setCardsDBData(dataDummy.cards);
+
+      setCardsDBData(dataDummy.cards.reverse());
       setForWho(dataDummy.for);
+      setForColorBox(dataDummy.forColorBox);
+      setForColorText(dataDummy.forColorText);
       setBgCard(dataDummy.bgCard);
       setBgCode(dataDummy.bgCode);
       setOppacity(dataDummy.oppacity);
       setTextColor(dataDummy.textColor);
       setBgBox(dataDummy.bgBox);
       setIsDone(true);
+      toast({
+        // title: 'This Card Just For You 😊',
+        // description: `${data.card.for}`,
+        // status: 'success',
+        duration: 99999999999,
+        isClosable: false,
+        render: () => (
+          <Center
+            rounded="lg"
+            color={dataDummy.forColorText}
+            p={2}
+            bg={dataDummy.forColorBox}
+            shadow="dark-lg"
+            marginBottom="2"
+          >
+            <Text fontWeight="bold">{dataDummy.for}</Text>
+          </Center>
+        )
+      });
     } catch (error) {
       console.log("woy error");
       console.error(error);
@@ -29,9 +60,12 @@ const PreviewCardPage = ({ json }) => {
     // console.log(json);
   }, []);
 
+  const toast = useToast();
   const [cardsDBData, setCardsDBData] = useState([]);
   const [isDone, setIsDone] = useState(false);
   const [forWho, setForWho] = useState("");
+  const [forColorBox, setForColorBox] = useState("");
+  const [forColorText, setForColorText] = useState("");
   const [bgCard, setBgCard] = useState("");
   const [bgCode, setBgCode] = useState("");
   const [oppacity, setOppacity] = useState(0.5);
@@ -103,7 +137,8 @@ const PreviewCardPage = ({ json }) => {
               <animated.div
                 {...bind(i)}
                 style={{
-                  transform: interpolate([rot, scale], trans)
+                  transform: interpolate([rot, scale], trans),
+                  borderRadius: "6%"
                 }}
               >
                 <Page
@@ -116,7 +151,7 @@ const PreviewCardPage = ({ json }) => {
               </animated.div>
             </animated.div>
           ))}
-        <Heading
+        {/* <Heading
           paddingBottom="3"
           w="full"
           pos="absolute"
@@ -124,12 +159,12 @@ const PreviewCardPage = ({ json }) => {
           align="center"
           size="md"
           color="white"
-        >
-          {/* {forWho} */}
-          <Badge colorScheme="blue" fontSize="xl">
+        > */}
+        {/* {forWho} */}
+        {/* <Badge colorScheme="blue" fontSize="xl">
             {forWho}
           </Badge>
-        </Heading>
+        </Heading> */}
       </Box>
     </>
   );

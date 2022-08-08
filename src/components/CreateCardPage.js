@@ -39,6 +39,8 @@ const CreateCardPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [formJSON, setFormJSON] = useState({
     for: "",
+    forColorBox: "lightblue",
+    forColorText: "black",
     cards: [
       { card: "" },
       { card: "" },
@@ -56,6 +58,11 @@ const CreateCardPage = () => {
 
   const [sliderValue, setSliderValue] = React.useState(5);
   const [showTooltip, setShowTooltip] = React.useState(false);
+
+  const modalCloseHandler = () => {
+    toast.closeAll();
+    onClose();
+  };
 
   const oppacityChangeHandler = (oppacity) => {
     setSliderValue(oppacity);
@@ -109,6 +116,18 @@ const CreateCardPage = () => {
       newFormJSON.cards = newCards;
       setFormJSON(newFormJSON);
     }
+  };
+
+  const forBoxColorChangeHandler = (e) => {
+    const newFormJSON = { ...formJSON };
+    newFormJSON.forColorBox = e.target.value;
+    setFormJSON(newFormJSON);
+  };
+
+  const forTextColorChangeHandler = (e) => {
+    const newFormJSON = { ...formJSON };
+    newFormJSON.forColorText = e.target.value;
+    setFormJSON(newFormJSON);
   };
 
   const forChangeHandler = (e) => {
@@ -193,6 +212,22 @@ const CreateCardPage = () => {
                 variant="outline"
                 onChange={forChangeHandler}
                 placeholder="Someone 🤩"
+              />
+            </FormControl>
+            <FormControl mt="4" id="for-text-color">
+              <FormLabel>For Text Color</FormLabel>
+              <Input
+                variant="outline"
+                onChange={forTextColorChangeHandler}
+                type="color"
+              />
+            </FormControl>
+            <FormControl mt="4" id="for-box-color">
+              <FormLabel>For Background Color</FormLabel>
+              <Input
+                variant="outline"
+                onChange={forBoxColorChangeHandler}
+                type="color"
               />
             </FormControl>
             <FormControl mt="4" isRequired>
@@ -334,18 +369,34 @@ const CreateCardPage = () => {
           </form>
         </Box>
       </Container>
-      <Modal isOpen={isOpen} onClose={onClose} size="full">
+      <Modal isOpen={isOpen} onClose={() => modalCloseHandler()} size="full">
         <ModalOverlay />
         <ModalContent>
+          <ModalHeader bg="red">
+            <Button
+              // top="0"
+              // right="0"
+              zIndex="1"
+              size="sm"
+              colorScheme="red"
+              onClick={() => modalCloseHandler()}
+            >
+              Close
+            </Button>
+          </ModalHeader>
           <ModalBody>
             <PreviewCardPage json={formJSON} />
           </ModalBody>
 
-          <ModalFooter>
-            <Button colorScheme="red" onClick={onClose} size="sm">
+          {/* <ModalFooter>
+            <Button
+              bottom="0"
+              colorScheme="red"
+              onClick={() => modalCloseHandler()}
+            >
               Close
             </Button>
-          </ModalFooter>
+          </ModalFooter> */}
         </ModalContent>
       </Modal>
     </Box>

@@ -3,7 +3,15 @@ import { useSprings, animated, to as interpolate } from "react-spring";
 import { useGesture } from "react-use-gesture";
 import "../styles/CardPageCss.css";
 import axios from "axios";
-import { Box, Badge, Heading } from "@chakra-ui/react";
+import {
+  Box,
+  Badge,
+  Heading,
+  Center,
+  Image,
+  Text,
+  useToast
+} from "@chakra-ui/react";
 import Page from "./Page";
 const CardPageForAulia = ({ match }) => {
   const getCardsDB = async () => {
@@ -40,12 +48,32 @@ const CardPageForAulia = ({ match }) => {
 
       setCardsDBData(data.card.cards.reverse());
       setForWho(data.card.for);
+      setForColorBox(data.card.forColorBox);
+      setForColorText(data.card.forColorText);
       setBgCard(data.card.bgCard);
       setBgCode(data.card.bgCode);
       setOppacity(data.card.oppacity);
       setTextColor(data.card.textColor);
       setBgBox(data.card.bgBox);
       setIsDone(true);
+      toast({
+        // title: 'This Card Just For You 😊',
+        // description: `${data.card.for}`,
+        // status: 'success',
+        duration: 99999999999,
+        isClosable: false,
+        render: () => (
+          <Center
+            rounded="lg"
+            color={data.card.forColorText}
+            p={2}
+            bg={data.card.forColorBox}
+            shadow="dark-lg"
+          >
+            <Text fontWeight="bold">{data.card.for}</Text>
+          </Center>
+        )
+      });
     } catch (error) {
       console.log("woy error");
       console.error(error);
@@ -57,9 +85,12 @@ const CardPageForAulia = ({ match }) => {
     // console.log(match);
   }, []);
 
+  const toast = useToast();
   const [cardsDBData, setCardsDBData] = useState([]);
   const [isDone, setIsDone] = useState(false);
   const [forWho, setForWho] = useState("");
+  const [forColorBox, setForColorBox] = useState("");
+  const [forColorText, setForColorText] = useState("");
   const [bgCard, setBgCard] = useState("");
   const [bgCode, setBgCode] = useState("");
   const [oppacity, setOppacity] = useState(0.5);
@@ -115,9 +146,9 @@ const CardPageForAulia = ({ match }) => {
   );
   return (
     <>
-      <Box className="card-container" bg={bgCode}>
-        {isDone &&
-          props.map(({ x, y, rot, scale }, i) => (
+      {isDone ? (
+        <Box className="card-container" bg={bgCode}>
+          {props.map(({ x, y, rot, scale }, i) => (
             <animated.div
               key={i}
               style={{
@@ -145,21 +176,28 @@ const CardPageForAulia = ({ match }) => {
               </animated.div>
             </animated.div>
           ))}
-        <Heading
-          paddingBottom="3"
-          w="full"
-          pos="absolute"
-          bottom="0"
-          align="center"
-          size="md"
-          color="white"
-        >
+          {/* <Heading
+            paddingBottom="3"
+            w="full"
+            pos="absolute"
+            bottom="0"
+            align="center"
+            size="md"
+            color="white"
+          > */}
           {/* {forWho} */}
-          <Badge colorScheme="orange" fontSize="xl">
-            {forWho}
-          </Badge>
-        </Heading>
-      </Box>
+          {/* <Badge colorScheme="orange" fontSize="xl">
+              {forWho}
+            </Badge>
+          </Heading> */}
+        </Box>
+      ) : (
+        <Box className="card-container" bg="lightblue">
+          <Center>
+            <Image src="https://raw.githubusercontent.com/gist/s-shivangi/7b54ec766cf446cafeb83882b590174d/raw/8957088c2e31dba6d72ce86c615cb3c7bb7f0b0c/nyan-cat.gif" />
+          </Center>
+        </Box>
+      )}
     </>
   );
 };

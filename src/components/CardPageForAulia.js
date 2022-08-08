@@ -2,50 +2,105 @@ import React, { useState, useEffect } from "react";
 import { useSprings, animated, to as interpolate } from "react-spring";
 import { useGesture } from "react-use-gesture";
 import "../styles/CardPageCss.css";
-// import axios from "axios";
-import { Box, Badge, Heading } from "@chakra-ui/react";
+import {
+  Box,
+  Badge,
+  Heading,
+  Center,
+  Image,
+  Text,
+  useToast
+} from "@chakra-ui/react";
 import Page from "./Page";
-const CardPageForAulia = ({ match }) => {
+const CardPageForAulia = () => {
   const getCardsDB = async () => {
     try {
-      // const { data } = await axios.get(
-      //   `https://elaborate-twilight-c60174.netlify.app/.netlify/functions/api/card/${match.params.someone}`
-      // );
       let dataDummy = {
-        card: {
-          _id: "62ed27fdff1d1a000966777d",
-          for: "Huki",
-          cards: [
-            { _id: "62ed27fdff1d1a000966777e", card: "アドバイス踏み気温ふ" },
-            {
-              _id: "62ed27fdff1d1a000966777f",
-              card: "腐女子女子高生飲まどう"
-            },
-            { _id: "62ed27fdff1d1a0009667780", card: "Uqhskwkw sjwbs" },
-            { _id: "62ed27fdff1d1a0009667781", card: "Bsisbw-isnw sjqk" },
-            { _id: "62ed27fdff1d1a0009667782", card: "Bsiskqndiw jskww" },
-            { _id: "62ed27fdff1d1a0009667783", card: "Baiansbw wus wiw q" }
-          ],
-          bgCard:
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNKzOvBbYm1k_z4GVdp42qKprJCqnEqrFHiA&usqp=CAU",
-          bgCode: "#ffff00",
-          oppacity: 0.3,
-          textColor: "#ff7373",
-          bgBox: "#ffff00",
-          createdAt: "2022-08-05T14:23:57.257Z",
-          updatedAt: "2022-08-05T14:23:57.257Z",
-          __v: 0
-        }
+        for: "Aulia",
+        forColorBox: "lightblue",
+        forColorText: "black",
+        cards: [
+          {
+            card:
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean quis sapien dictum nunc commodo non."
+          },
+          {
+            card:
+              "Etiam in lectus ac velit aliquet luctus sed ut nisi. Praesent vel vestibulum lorem, sed luctus amet."
+          },
+          {
+            card:
+              "In tristique turpis nisl, eget malesuada augue semper eu. Aenean nec risus malesuada nibh tincidunt."
+          },
+          {
+            card:
+              "Sed id dignissim orci. Nunc dapibus vestibulum dolor eu lacinia. Vivamus in mattis orci. Quisque id."
+          },
+          {
+            card:
+              "Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec consequat vel sem ut massa nunc."
+          },
+          {
+            card:
+              "Fusce commodo nunc a accumsan vehicula. Aliquam ac tristique magna. Ut id libero ut turpis eleifend."
+          },
+          {
+            card:
+              "Integer erat justo, tincidunt non luctus eget, tempor vel lorem. Aliquam volutpat ultricies posuere."
+          },
+          {
+            card:
+              "Vestibulum dictum vitae magna eget lobortis. Aenean viverra, enim ut tincidunt volutpat, odio velit."
+          },
+          {
+            card:
+              "Vivamus luctus orci pharetra, convallis dolor ac, vestibulum velit. Vestibulum aliquam nibh quis et."
+          },
+          {
+            card:
+              "Quisque vitae congue ligula. Aliquam vulputate suscipit dolor, in fringilla lectus condimentum duis."
+          }
+        ],
+        bgCard:
+          "https://gray-wwbt-prod.cdn.arcpublishing.com/resizer/9-QDoKyfV4H8F0abvgrXhJRqMos=/1200x1800/smart/filters:quality(85)/cloudfront-us-east-1.images.arcpublishing.com/gray/2BNPCSU4ENHWDCZLK4KJU2JC5A.jpg",
+        bgCode: "#ffd699",
+        oppacity: 1,
+        textColor: "#ffb84d",
+        bgBox: "black"
       };
+      console.log(dataDummy);
 
-      setCardsDBData(dataDummy.card.cards.reverse());
-      setForWho(dataDummy.card.for);
-      setBgCard(dataDummy.card.bgCard);
-      setBgCode(dataDummy.card.bgCode);
-      setOppacity(dataDummy.card.oppacity);
-      setTextColor(dataDummy.card.textColor);
-      setBgBox(dataDummy.card.bgBox);
+      setCardsDBData(dataDummy.cards);
+
+      setCardsDBData(dataDummy.cards.reverse());
+      setForWho(dataDummy.for);
+      setForColorBox(dataDummy.forColorBox);
+      setForColorText(dataDummy.forColorText);
+      setBgCard(dataDummy.bgCard);
+      setBgCode(dataDummy.bgCode);
+      setOppacity(dataDummy.oppacity);
+      setTextColor(dataDummy.textColor);
+      setBgBox(dataDummy.bgBox);
       setIsDone(true);
+      toast({
+        // title: 'This Card Just For You 😊',
+        // description: `${data.card.for}`,
+        // status: 'success',
+        duration: 99999999999,
+        isClosable: false,
+        render: () => (
+          <Center
+            rounded="lg"
+            color={dataDummy.forColorText}
+            p={2}
+            bg={dataDummy.forColorBox}
+            shadow="dark-lg"
+            marginBottom="2"
+          >
+            <Text fontWeight="bold">{dataDummy.for}</Text>
+          </Center>
+        )
+      });
     } catch (error) {
       console.log("woy error");
       console.error(error);
@@ -54,12 +109,15 @@ const CardPageForAulia = ({ match }) => {
 
   useEffect(() => {
     getCardsDB();
-    // console.log(match);
+    // console.log(json);
   }, []);
 
+  const toast = useToast();
   const [cardsDBData, setCardsDBData] = useState([]);
   const [isDone, setIsDone] = useState(false);
   const [forWho, setForWho] = useState("");
+  const [forColorBox, setForColorBox] = useState("");
+  const [forColorText, setForColorText] = useState("");
   const [bgCard, setBgCard] = useState("");
   const [bgCode, setBgCode] = useState("");
   const [oppacity, setOppacity] = useState(0.5);
@@ -115,7 +173,7 @@ const CardPageForAulia = ({ match }) => {
   );
   return (
     <>
-      <Box className="card-container" bg={bgCode}>
+      <Box className="card-container-preview" bg={bgCode}>
         {isDone &&
           props.map(({ x, y, rot, scale }, i) => (
             <animated.div
@@ -131,7 +189,8 @@ const CardPageForAulia = ({ match }) => {
               <animated.div
                 {...bind(i)}
                 style={{
-                  transform: interpolate([rot, scale], trans)
+                  transform: interpolate([rot, scale], trans),
+                  borderRadius: "6%"
                 }}
               >
                 <Page
@@ -144,7 +203,7 @@ const CardPageForAulia = ({ match }) => {
               </animated.div>
             </animated.div>
           ))}
-        <Heading
+        {/* <Heading
           paddingBottom="3"
           w="full"
           pos="absolute"
@@ -152,12 +211,12 @@ const CardPageForAulia = ({ match }) => {
           align="center"
           size="md"
           color="white"
-        >
-          {/* {forWho} */}
-          <Badge colorScheme="blue" fontSize="xl">
+        > */}
+        {/* {forWho} */}
+        {/* <Badge colorScheme="blue" fontSize="xl">
             {forWho}
           </Badge>
-        </Heading>
+        </Heading> */}
       </Box>
     </>
   );
