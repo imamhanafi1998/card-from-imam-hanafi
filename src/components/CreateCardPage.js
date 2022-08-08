@@ -39,7 +39,7 @@ const CreateCardPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [formJSON, setFormJSON] = useState({
     for: "",
-    forColorBox: "lightblue",
+    forColorBox: "black",
     forColorText: "black",
     cards: [
       { card: "" },
