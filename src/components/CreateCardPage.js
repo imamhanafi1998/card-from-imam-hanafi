@@ -183,7 +183,7 @@ const CreateCardPage = () => {
         duration: 3000,
         position: "top"
       });
-      History.push(`/for/${data.card._id}`);
+      History.push(`/card-id/${data.card._id}`);
     } catch (error) {
       console.error(error);
       toast({
