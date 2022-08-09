@@ -4,7 +4,7 @@ import { Box, Center, Image } from "@chakra-ui/react";
 
 const UnknownPage = () => {
   return (
-    <Box className="card-container" bg="lightblue">
+    <Box className="card-container" bg="#b5d4dd">
       <Helmet>
         <title>Card Not Found 😥</title>
       </Helmet>
