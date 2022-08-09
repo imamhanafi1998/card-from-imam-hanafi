@@ -22,7 +22,7 @@ const Page = ({
           draggable={false}
           className="card-image-inside"
           src={image}
-          alt="Dan Abramov"
+          alt="broken_image"
           opacity={oppacity}
         ></Image>
         <Box bg={bg_box} p="2" rounded="lg">

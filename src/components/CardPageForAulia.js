@@ -1,16 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { Helmet } from "react-helmet";
 import { useSprings, animated, to as interpolate } from "react-spring";
 import { useGesture } from "react-use-gesture";
 import "../styles/CardPageCss.css";
-import {
-  Box,
-  Badge,
-  Heading,
-  Center,
-  Image,
-  Text,
-  useToast
-} from "@chakra-ui/react";
+import { Box, Center, Text, useToast } from "@chakra-ui/react";
 import Page from "./Page";
 const CardPageForAulia = () => {
   const getCardsDB = async () => {
@@ -74,8 +67,6 @@ const CardPageForAulia = () => {
 
       setCardsDBData(dataDummy.cards.reverse());
       setForWho(dataDummy.for);
-      setForColorBox(dataDummy.forColorBox);
-      setForColorText(dataDummy.forColorText);
       setBgCard(dataDummy.bgCard);
       setBgCode(dataDummy.bgCode);
       setOppacity(dataDummy.oppacity);
@@ -83,9 +74,6 @@ const CardPageForAulia = () => {
       setBgBox(dataDummy.bgBox);
       setIsDone(true);
       toast({
-        // title: 'This Card Just For You 😊',
-        // description: `${data.card.for}`,
-        // status: 'success',
         duration: 99999999999,
         isClosable: false,
         render: () => (
@@ -109,15 +97,12 @@ const CardPageForAulia = () => {
 
   useEffect(() => {
     getCardsDB();
-    // console.log(json);
   }, []);
 
   const toast = useToast();
   const [cardsDBData, setCardsDBData] = useState([]);
   const [isDone, setIsDone] = useState(false);
   const [forWho, setForWho] = useState("");
-  const [forColorBox, setForColorBox] = useState("");
-  const [forColorText, setForColorText] = useState("");
   const [bgCard, setBgCard] = useState("");
   const [bgCode, setBgCode] = useState("");
   const [oppacity, setOppacity] = useState(0.5);
@@ -131,7 +116,6 @@ const CardPageForAulia = () => {
     delay: i * 100
   });
   const from = (i) => ({ x: 0, rot: 0, scale: 1.5, y: -1000 });
-  // This is being used down there in the view, it interpolates rotation and scale into a css transform
   const trans = (r, s) =>
     `perspective(1500px) rotateX(30deg) rotateY(${
       r / 10
@@ -150,15 +134,15 @@ const CardPageForAulia = () => {
       direction: [xDir],
       velocity
     }) => {
-      const trigger = velocity > 0.2; // If you flick hard enough it should trigger the card to fly out
-      const dir = xDir < 0 ? -1 : 1; // Direction should either point left or right
-      if (!down && trigger) gone.add(index); // If button/finger's up and trigger velocity is reached, we flag the card ready to fly out
+      const trigger = velocity > 0.2;
+      const dir = xDir < 0 ? -1 : 1;
+      if (!down && trigger) gone.add(index);
       set((i) => {
-        if (index !== i) return; // We're only interested in changing spring-data for the current spring
+        if (index !== i) return;
         const isGone = gone.has(index);
-        const x = isGone ? (200 + window.innerWidth) * dir : down ? xDelta : 0; // When a card is gone it flys out left or right, otherwise goes back to zero
-        const rot = xDelta / 100 + (isGone ? dir * 10 * velocity : 0); // How much the card tilts, flicking it harder makes it rotate faster
-        const scale = down ? 1.1 : 1; // Active cards lift up a bit
+        const x = isGone ? (200 + window.innerWidth) * dir : down ? xDelta : 0;
+        const rot = xDelta / 100 + (isGone ? dir * 10 * velocity : 0);
+        const scale = down ? 1.1 : 1;
         return {
           x,
           rot,
@@ -174,6 +158,9 @@ const CardPageForAulia = () => {
   return (
     <>
       <Box className="card-container-preview" bg={bgCode}>
+        <Helmet>
+          <title>{`Card For ${forWho}`}</title>
+        </Helmet>
         {isDone &&
           props.map(({ x, y, rot, scale }, i) => (
             <animated.div
@@ -185,7 +172,6 @@ const CardPageForAulia = () => {
                 )
               }}
             >
-              {/* This is the card itself, we're binding our gesture to it (and inject its index so we know which is which) */}
               <animated.div
                 {...bind(i)}
                 style={{
@@ -203,20 +189,6 @@ const CardPageForAulia = () => {
               </animated.div>
             </animated.div>
           ))}
-        {/* <Heading
-          paddingBottom="3"
-          w="full"
-          pos="absolute"
-          bottom="0"
-          align="center"
-          size="md"
-          color="white"
-        > */}
-        {/* {forWho} */}
-        {/* <Badge colorScheme="blue" fontSize="xl">
-            {forWho}
-          </Badge>
-        </Heading> */}
       </Box>
     </>
   );

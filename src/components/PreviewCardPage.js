@@ -2,94 +2,70 @@ import React, { useState, useEffect } from "react";
 import { useSprings, animated, to as interpolate } from "react-spring";
 import { useGesture } from "react-use-gesture";
 import "../styles/CardPageCss.css";
-import {
-  Box,
-  Badge,
-  Heading,
-  Center,
-  Image,
-  Text,
-  useToast
-} from "@chakra-ui/react";
+import { Box, Center, Text, useToast } from "@chakra-ui/react";
 import Page from "./Page";
-const PreviewCardPage = ({ json }) => {
-  const getCardsDB = async (incomingData) => {
-    try {
-      let dataDummy = { ...json };
-      console.log(dataDummy);
-
-      setCardsDBData(dataDummy.cards);
-
-      setCardsDBData(dataDummy.cards.reverse());
-      setForWho(dataDummy.for);
-      setForColorBox(dataDummy.forColorBox);
-      setForColorText(dataDummy.forColorText);
-      setBgCard(dataDummy.bgCard);
-      setBgCode(dataDummy.bgCode);
-      setOppacity(dataDummy.oppacity);
-      setTextColor(dataDummy.textColor);
-      setBgBox(dataDummy.bgBox);
-      setIsDone(true);
-      toast({
-        // title: 'This Card Just For You 😊',
-        // description: `${data.card.for}`,
-        // status: 'success',
-        duration: 99999999999,
-        isClosable: false,
-        render: () => (
-          <Center
-            rounded="lg"
-            color={dataDummy.forColorText}
-            p={2}
-            bg={dataDummy.forColorBox}
-            shadow="dark-lg"
-            marginBottom="2"
-          >
-            <Text fontWeight="bold">{dataDummy.for}</Text>
-          </Center>
-        )
-      });
-    } catch (error) {
-      console.log("woy error");
-      console.error(error);
-    }
+const PreviewCardPage = ({ json, reversedCards }) => {
+  const getCardsDB = () => {
+    setCardsDBDataPreview(reversedCards);
+    setBgCardPreview(json.bgCard);
+    setBgCodePreview(json.bgCode);
+    setOppacityPreview(json.oppacity);
+    setTextColorPreview(json.textColor);
+    setBgBoxPreview(json.bgBox);
+    setIsDonePreview(true);
+    toast({
+      // title: 'This Card Just For You 😊',
+      duration: 99999999999,
+      isClosable: false,
+      render: () => (
+        <Center
+          rounded="lg"
+          color={json.forColorText}
+          p={2}
+          bg={json.forColorBox}
+          shadow="dark-lg"
+          marginBottom="2"
+        >
+          <Text fontWeight="bold">{json.for}</Text>
+        </Center>
+      )
+    });
   };
 
   useEffect(() => {
     getCardsDB();
-    // console.log(json);
   }, []);
 
   const toast = useToast();
-  const [cardsDBData, setCardsDBData] = useState([]);
-  const [isDone, setIsDone] = useState(false);
-  const [forWho, setForWho] = useState("");
-  const [forColorBox, setForColorBox] = useState("");
-  const [forColorText, setForColorText] = useState("");
-  const [bgCard, setBgCard] = useState("");
-  const [bgCode, setBgCode] = useState("");
-  const [oppacity, setOppacity] = useState(0.5);
-  const [textColor, setTextColor] = useState("white");
-  const [bgBox, setBgBox] = useState("teal");
-  const to = (i) => ({
+  const [cardsDBDataPreview, setCardsDBDataPreview] = useState([]);
+  const [isDonePreview, setIsDonePreview] = useState(false);
+  const [bgCardPreview, setBgCardPreview] = useState("");
+  const [bgCodePreview, setBgCodePreview] = useState("");
+  const [oppacityPreview, setOppacityPreview] = useState(0.5);
+  const [textColorPreview, setTextColorPreview] = useState("white");
+  const [bgBoxPreview, setBgBoxPreview] = useState("teal");
+  const toPreview = (i) => ({
     x: 0,
     y: i * -4,
     scale: 1,
     rot: -10 + Math.random() * 20,
     delay: i * 100
   });
-  const from = (i) => ({ x: 0, rot: 0, scale: 1.5, y: -1000 });
+  const fromPreview = (i) => ({ x: 0, rot: 0, scale: 1.5, y: -1000 });
   // This is being used down there in the view, it interpolates rotation and scale into a css transform
-  const trans = (r, s) =>
+  const transPreview = (r, s) =>
     `perspective(1500px) rotateX(30deg) rotateY(${
       r / 10
     }deg) rotateZ(${r}deg) scale(${s})`;
-  const [gone] = useState(() => new Set());
-  const [props, set] = useSprings(cardsDBData.length, (i) => ({
-    ...to(i),
-    from: from(i)
-  }));
-  const bind = useGesture(
+  const [gonePreview] = useState(() => new Set());
+  const [propsPreview, setPreview] = useSprings(
+    cardsDBDataPreview.length,
+    (i) => ({
+      ...toPreview(i),
+      from: fromPreview(i)
+    })
+  );
+  const bindPreview = useGesture(
     ({
       args: [index],
       down,
@@ -100,10 +76,10 @@ const PreviewCardPage = ({ json }) => {
     }) => {
       const trigger = velocity > 0.2; // If you flick hard enough it should trigger the card to fly out
       const dir = xDir < 0 ? -1 : 1; // Direction should either point left or right
-      if (!down && trigger) gone.add(index); // If button/finger's up and trigger velocity is reached, we flag the card ready to fly out
-      set((i) => {
+      if (!down && trigger) gonePreview.add(index); // If button/finger's up and trigger velocity is reached, we flag the card ready to fly out
+      setPreview((i) => {
         if (index !== i) return; // We're only interested in changing spring-data for the current spring
-        const isGone = gone.has(index);
+        const isGone = gonePreview.has(index);
         const x = isGone ? (200 + window.innerWidth) * dir : down ? xDelta : 0; // When a card is gone it flys out left or right, otherwise goes back to zero
         const rot = xDelta / 100 + (isGone ? dir * 10 * velocity : 0); // How much the card tilts, flicking it harder makes it rotate faster
         const scale = down ? 1.1 : 1; // Active cards lift up a bit
@@ -115,15 +91,18 @@ const PreviewCardPage = ({ json }) => {
           config: { friction: 50, tension: down ? 800 : isGone ? 200 : 500 }
         };
       });
-      if (!down && gone.size === cardsDBData.length)
-        setTimeout(() => gone.clear() || set((i) => to(i)), 600);
+      if (!down && gonePreview.size === cardsDBDataPreview.length)
+        setTimeout(
+          () => gonePreview.clear() || setPreview((i) => toPreview(i)),
+          600
+        );
     }
   );
   return (
     <>
-      <Box className="card-container-preview" bg={bgCode}>
-        {isDone &&
-          props.map(({ x, y, rot, scale }, i) => (
+      <Box className="card-container-preview" bg={bgCodePreview}>
+        {isDonePreview &&
+          propsPreview.map(({ x, y, rot, scale }, i) => (
             <animated.div
               key={i}
               style={{
@@ -133,38 +112,23 @@ const PreviewCardPage = ({ json }) => {
                 )
               }}
             >
-              {/* This is the card itself, we're binding our gesture to it (and inject its index so we know which is which) */}
               <animated.div
-                {...bind(i)}
+                {...bindPreview(i)}
                 style={{
-                  transform: interpolate([rot, scale], trans),
+                  transform: interpolate([rot, scale], transPreview),
                   borderRadius: "6%"
                 }}
               >
                 <Page
-                  text={cardsDBData[i].card}
-                  image={bgCard}
-                  oppacity={oppacity}
-                  text_color={textColor}
-                  bg_box={bgBox}
+                  text={cardsDBDataPreview[i].card}
+                  image={bgCardPreview}
+                  oppacity={oppacityPreview}
+                  text_color={textColorPreview}
+                  bg_box={bgBoxPreview}
                 />
               </animated.div>
             </animated.div>
           ))}
-        {/* <Heading
-          paddingBottom="3"
-          w="full"
-          pos="absolute"
-          bottom="0"
-          align="center"
-          size="md"
-          color="white"
-        > */}
-        {/* {forWho} */}
-        {/* <Badge colorScheme="blue" fontSize="xl">
-            {forWho}
-          </Badge>
-        </Heading> */}
       </Box>
     </>
   );
