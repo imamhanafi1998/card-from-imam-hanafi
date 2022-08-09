@@ -41,7 +41,7 @@ const CreateCardPage = () => {
     forColorBox: "#000000",
     forColorText: "#ffffff",
     cards: [
-      { card: "11111" },
+      { card: "" },
       { card: "" },
       { card: "" },
       { card: "" },
