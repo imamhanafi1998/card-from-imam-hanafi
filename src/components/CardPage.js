@@ -142,7 +142,7 @@ const CardPageForAulia = ({ match }) => {
           ))}
         </Box>
       ) : isError ? (
-        <Box className="card-container" bg="lightblue">
+        <Box className="card-container" bg="#b5d4dd">
           <Helmet>
             <title>Card Not Found 😥</title>
           </Helmet>
