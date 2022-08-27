@@ -15,10 +15,16 @@ const CardPageForAulia = ({ match }) => {
       setCardsDBData(data.card.cards.reverse());
       setForWho(data.card.for);
       setBgCard(data.card.bgCard);
-      setBgCode(data.card.bgCode);
+      // setBgCode(data.card.bgCode);
       setOppacity(data.card.oppacity);
       setTextColor(data.card.textColor);
       setBgBox(data.card.bgBox);
+      data.card.bgImgConfig.backImg === ""
+        ? setBgCode(data.card.bgCode)
+        : setBgImgConfig({
+            backImg: data.card.bgImgConfig.backImg,
+            backSize: data.card.bgImgConfig.backSize
+          });
       setIsDone(true);
       setIsError(false);
       toast({
@@ -58,6 +64,10 @@ const CardPageForAulia = ({ match }) => {
   const [oppacity, setOppacity] = useState(0.5);
   const [textColor, setTextColor] = useState("white");
   const [bgBox, setBgBox] = useState("teal");
+  const [bgImgConfig, setBgImgConfig] = useState({
+    backImg: "",
+    backSize: ""
+  });
   const to = (i) => ({
     x: 0,
     y: i * -4,
@@ -108,7 +118,13 @@ const CardPageForAulia = ({ match }) => {
   return (
     <>
       {isDone && !isError ? (
-        <Box className="card-container" bg={bgCode}>
+        <Box
+          className="card-container"
+          backgroundImage={bgImgConfig.backImg}
+          backgroundPosition="center"
+          backgroundSize={bgImgConfig.backSize}
+          bg={bgCode}
+        >
           <Helmet>
             <title>{`Card For ${forWho}`}</title>
           </Helmet>

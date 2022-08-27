@@ -23,7 +23,8 @@ import {
   ModalContent,
   ModalHeader,
   ModalBody,
-  useDisclosure
+  useDisclosure,
+  Select
 } from "@chakra-ui/react";
 import { IconButton } from "@chakra-ui/react";
 import { AddIcon, MinusIcon, ExternalLinkIcon } from "@chakra-ui/icons";
@@ -50,9 +51,15 @@ const CreateCardPage = () => {
     ],
     bgCard: "",
     bgCode: "#3f3f3f",
+    bgImgConfig: {
+      backImg:
+        "https://gray-wwbt-prod.cdn.arcpublishing.com/resizer/9-QDoKyfV4H8F0abvgrXhJRqMos=/1200x1800/smart/filters:quality(85)/cloudfront-us-east-1.images.arcpublishing.com/gray/2BNPCSU4ENHWDCZLK4KJU2JC5A.jpg",
+      backSize: "auto"
+    },
     oppacity: 0.5,
     textColor: "#ffffff",
-    bgBox: "#000000"
+    bgBox: "#000000",
+    bgSelect: "color"
   });
   const [reversedCards, setReversedCards] = useState([]);
 
@@ -160,11 +167,42 @@ const CreateCardPage = () => {
     setFormJSON(newFormJSON);
   };
 
+  const bgSelectHandler = (e) => {
+    const newFormJSON = { ...formJSON };
+    newFormJSON.bgSelect = e.target.value;
+    // console.log(e.target.value);
+    setFormJSON(newFormJSON);
+  };
+
+  const bgImgChangeHandler = (e) => {
+    const newFormJSON = { ...formJSON };
+    newFormJSON.bgImgConfig.backImg = e.target.value;
+    setFormJSON(newFormJSON);
+  };
+
+  const bgImgSizeChangeHandler = (e) => {
+    const newFormJSON = { ...formJSON };
+    newFormJSON.bgImgConfig.backSize = e.target.value;
+    setFormJSON(newFormJSON);
+  };
+
   const previewHandler = async () => {
-    let rC = [...formJSON.cards];
-    setReversedCards(rC.reverse());
-    onOpen();
-    // window.open(`/preview/${formJSON}`, "_blank");
+    const isValid = document.getElementById("main-form").checkValidity();
+    // console.log(c);
+    if (!isValid) {
+      toast({
+        description: "You missed some required fields 😒",
+        status: "error",
+        duration: 3000,
+        position: "top"
+      });
+    } else {
+      let rC = [...formJSON.cards];
+      setReversedCards(rC.reverse());
+      onOpen();
+    }
+
+    // console.log(formJSON);
   };
 
   const submitHandler = async (e) => {
@@ -206,7 +244,7 @@ const CreateCardPage = () => {
           Create Your Card 😊
         </Text>
         <Box p="4" bg="white" rounded="lg" shadow="md">
-          <form onSubmit={(e) => submitHandler(e)}>
+          <form onSubmit={(e) => submitHandler(e)} id="main-form">
             <FormControl id="for" isRequired>
               <FormLabel>For ?</FormLabel>
               <Input
@@ -270,7 +308,7 @@ const CreateCardPage = () => {
                 ))}
               </SimpleGrid>
             </FormControl>
-            <FormControl mt="4" id="bg-card">
+            <FormControl mt="4" id="bg-card" isRequired>
               <FormLabel>Image Card URL</FormLabel>
               <Input
                 value={formJSON.bgCard}
@@ -281,7 +319,18 @@ const CreateCardPage = () => {
                 placeholder="Paste your image url here 😎"
               />
             </FormControl>
-            <FormControl mt="4" id="bg-code">
+            <FormControl mt="4" id="bg-select">
+              <FormLabel>Choose Background Style</FormLabel>
+              <Select value={formJSON.bgSelect} onChange={bgSelectHandler}>
+                <option value="color">Color</option>
+                <option value="image">Image</option>
+              </Select>
+            </FormControl>
+            <FormControl
+              mt="4"
+              id="bg-code"
+              display={formJSON.bgSelect === "color" ? "block" : "none"}
+            >
               <FormLabel>Background Color</FormLabel>
               <Input
                 value={formJSON.bgCode}
@@ -289,6 +338,36 @@ const CreateCardPage = () => {
                 onChange={bgCodeChangeHandler}
                 type="color"
               />
+            </FormControl>
+            <FormControl
+              mt="4"
+              id="bg-config-image"
+              display={formJSON.bgSelect === "image" ? "block" : "none"}
+              isRequired={formJSON.bgSelect === "image"}
+            >
+              <FormLabel>Background Image</FormLabel>
+              <Input
+                value={formJSON.bgImgConfig.backImg}
+                variant="outline"
+                onChange={bgImgChangeHandler}
+                type="url"
+              />
+            </FormControl>
+            <FormControl
+              mt="4"
+              id="bg-config-image-size"
+              display={formJSON.bgSelect === "image" ? "block" : "none"}
+              isRequired={formJSON.bgSelect === "image"}
+            >
+              <FormLabel>Background Image Size</FormLabel>
+              <Select
+                value={formJSON.bgImgConfig.backSize}
+                onChange={bgImgSizeChangeHandler}
+              >
+                <option value="auto">Auto</option>
+                <option value="contain">Contain</option>
+                <option value="cover">Cover</option>
+              </Select>
             </FormControl>
             <FormControl mt="4" id="oppacity" isRequired>
               <FormLabel>Image Oppacity</FormLabel>

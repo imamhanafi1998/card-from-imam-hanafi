@@ -56,19 +56,34 @@ const CardPageForAulia = () => {
         ],
         bgCard:
           "https://gray-wwbt-prod.cdn.arcpublishing.com/resizer/9-QDoKyfV4H8F0abvgrXhJRqMos=/1200x1800/smart/filters:quality(85)/cloudfront-us-east-1.images.arcpublishing.com/gray/2BNPCSU4ENHWDCZLK4KJU2JC5A.jpg",
-        bgCode: "#ffd699",
+        // bgCode: "#ffd699",
+        bgCode: "",
+        // backImg:
+        //   "https://img.freepik.com/free-vector/cute-astronaut-holding-space-board-cartoon-vector-icon-illustration-science-technology-icon-concept_138676-4336.jpg?w=360",
         oppacity: 1,
+        bgImgConfig: {
+          backImg:
+            "https://img.freepik.com/free-vector/cute-astronaut-holding-space-board-cartoon-vector-icon-illustration-science-technology-icon-concept_138676-4336.jpg?w=360",
+          backSize: ""
+        },
         textColor: "#ffb84d",
         bgBox: "black"
       };
-      console.log(dataDummy);
+      // console.log(dataDummy);
 
       setCardsDBData(dataDummy.cards);
 
       setCardsDBData(dataDummy.cards.reverse());
       setForWho(dataDummy.for);
       setBgCard(dataDummy.bgCard);
-      setBgCode(dataDummy.bgCode);
+
+      dataDummy.bgCode !== ""
+        ? setBgCode(dataDummy.bgCode)
+        : setBgImgConfig({
+            backImg: dataDummy.bgImgConfig.backImg,
+            backSize: dataDummy.bgImgConfig.backSize
+          });
+
       setOppacity(dataDummy.oppacity);
       setTextColor(dataDummy.textColor);
       setBgBox(dataDummy.bgBox);
@@ -108,6 +123,10 @@ const CardPageForAulia = () => {
   const [oppacity, setOppacity] = useState(0.5);
   const [textColor, setTextColor] = useState("white");
   const [bgBox, setBgBox] = useState("teal");
+  const [bgImgConfig, setBgImgConfig] = useState({
+    backImg: "",
+    backSize: ""
+  });
   const to = (i) => ({
     x: 0,
     y: i * -4,
@@ -157,7 +176,13 @@ const CardPageForAulia = () => {
   );
   return (
     <>
-      <Box className="card-container-preview" bg={bgCode}>
+      <Box
+        className="card-container-preview"
+        backgroundImage={bgImgConfig.backImg}
+        backgroundPosition="center"
+        backgroundSize={bgImgConfig.backSize}
+        bg={bgCode}
+      >
         <Helmet>
           <title>{`Card For ${forWho}`}</title>
         </Helmet>

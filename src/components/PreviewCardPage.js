@@ -6,12 +6,18 @@ import { Box, Center, Text, useToast } from "@chakra-ui/react";
 import Page from "./Page";
 const PreviewCardPage = ({ json, reversedCards }) => {
   const getCardsDB = () => {
+    // console.log(json.bgImgConfig.backImg);
     setCardsDBDataPreview(reversedCards);
     setBgCardPreview(json.bgCard);
-    setBgCodePreview(json.bgCode);
     setOppacityPreview(json.oppacity);
     setTextColorPreview(json.textColor);
     setBgBoxPreview(json.bgBox);
+    json.bgSelect === "color"
+      ? setBgCodePreview(json.bgCode)
+      : setBgImgConfig({
+          backImg: json.bgImgConfig.backImg,
+          backSize: json.bgImgConfig.backSize
+        });
     setIsDonePreview(true);
     toast({
       // title: 'This Card Just For You 😊',
@@ -44,6 +50,10 @@ const PreviewCardPage = ({ json, reversedCards }) => {
   const [oppacityPreview, setOppacityPreview] = useState(0.5);
   const [textColorPreview, setTextColorPreview] = useState("white");
   const [bgBoxPreview, setBgBoxPreview] = useState("teal");
+  const [bgImgConfig, setBgImgConfig] = useState({
+    backImg: "",
+    backSize: ""
+  });
   const toPreview = (i) => ({
     x: 0,
     y: i * -4,
@@ -100,7 +110,13 @@ const PreviewCardPage = ({ json, reversedCards }) => {
   );
   return (
     <>
-      <Box className="card-container-preview" bg={bgCodePreview}>
+      <Box
+        className="card-container-preview"
+        backgroundImage={bgImgConfig.backImg}
+        backgroundPosition="center"
+        backgroundSize={bgImgConfig.backSize}
+        bg={bgCodePreview}
+      >
         {isDonePreview &&
           propsPreview.map(({ x, y, rot, scale }, i) => (
             <animated.div
