@@ -53,7 +53,7 @@ const CreateCardPage = () => {
     bgCode: "#3f3f3f",
     bgImgConfig: {
       backImg:
-        "https://gray-wwbt-prod.cdn.arcpublishing.com/resizer/9-QDoKyfV4H8F0abvgrXhJRqMos=/1200x1800/smart/filters:quality(85)/cloudfront-us-east-1.images.arcpublishing.com/gray/2BNPCSU4ENHWDCZLK4KJU2JC5A.jpg",
+        "https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg",
       backSize: "auto"
     },
     oppacity: 0.5,
