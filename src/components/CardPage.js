@@ -143,7 +143,7 @@ const CardPageForAulia = ({ match }) => {
                 {...bind(i)}
                 style={{
                   transform: interpolate([rot, scale], trans),
-                  borderRadius: "6%"
+                  borderRadius: "10px"
                 }}
               >
                 <Page

@@ -18,7 +18,7 @@ const Page = ({
     >
       <Box>
         <Image
-          rounded="xl"
+          rounded="9px"
           draggable={false}
           className="card-image-inside"
           src={image}
