@@ -9,7 +9,7 @@ const CardPageForAulia = () => {
   const getCardsDB = async () => {
     try {
       let dataDummy = {
-        for: "Aulia",
+        for: "Aulia ✨🎉🎊",
         forColorBox: "lightblue",
         forColorText: "black",
         cards: [
@@ -63,7 +63,7 @@ const CardPageForAulia = () => {
         oppacity: 1,
         bgImgConfig: {
           backImg:
-            "https://static.vecteezy.com/system/resources/previews/002/266/265/original/cute-cloud-and-moon-on-grid-background-cartoon-doodle-seamless-pattern-free-vector.jpg",
+            "https://images.unsplash.com/photo-1618941240535-234c3212e3e7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bmlnaHQlMjB3YWxscGFwZXJ8ZW58MHx8MHx8&w=1000&q=80",
           backSize: "cover"
         },
         textColor: "#ffb84d",
