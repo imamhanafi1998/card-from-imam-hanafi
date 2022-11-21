@@ -63,7 +63,7 @@ const CardPageForAulia = () => {
         oppacity: 1,
         bgImgConfig: {
           backImg:
-            "https://i.pinimg.com/originals/1a/60/1a/1a601a317ff39cbd123d69f9adc5e171.jpg",
+            "https://static.vecteezy.com/system/resources/previews/002/266/265/original/cute-cloud-and-moon-on-grid-background-cartoon-doodle-seamless-pattern-free-vector.jpg",
           backSize: ""
         },
         textColor: "#ffb84d",
