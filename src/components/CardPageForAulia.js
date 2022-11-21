@@ -63,7 +63,7 @@ const CardPageForAulia = () => {
         oppacity: 1,
         bgImgConfig: {
           backImg:
-            "https://img.freepik.com/free-vector/cute-astronaut-holding-space-board-cartoon-vector-icon-illustration-science-technology-icon-concept_138676-4336.jpg?w=360",
+            "https://i.pinimg.com/originals/1a/60/1a/1a601a317ff39cbd123d69f9adc5e171.jpg",
           backSize: ""
         },
         textColor: "#ffb84d",
