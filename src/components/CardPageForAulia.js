@@ -64,7 +64,7 @@ const CardPageForAulia = () => {
         bgImgConfig: {
           backImg:
             "https://static.vecteezy.com/system/resources/previews/002/266/265/original/cute-cloud-and-moon-on-grid-background-cartoon-doodle-seamless-pattern-free-vector.jpg",
-          backSize: ""
+          backSize: "cover"
         },
         textColor: "#ffb84d",
         bgBox: "black"
