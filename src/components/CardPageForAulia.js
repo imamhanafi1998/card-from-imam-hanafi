@@ -15,44 +15,52 @@ const CardPageForAulia = () => {
         cards: [
           {
             card:
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean quis sapien dictum nunc commodo non."
+              "Hey ull.... 👧"
           },
           {
             card:
-              "Etiam in lectus ac velit aliquet luctus sed ut nisi. Praesent vel vestibulum lorem, sed luctus amet."
+              "Maaf nganggu kesibukanmu malam kali ini 🙏"
           },
           {
             card:
-              "In tristique turpis nisl, eget malesuada augue semper eu. Aenean nec risus malesuada nibh tincidunt."
+              "Tidak ada yang ingin aku ucapkan selain selamat atas ulang tahunmu.... hari ini 🌙"
           },
           {
             card:
-              "Sed id dignissim orci. Nunc dapibus vestibulum dolor eu lacinia. Vivamus in mattis orci. Quisque id."
+              "Selamat ulang tahun ya, teman lamakuu.... ✨🎉🎊"
           },
           {
             card:
-              "Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec consequat vel sem ut massa nunc."
+              "Mungkin ini agak canggung, tapi aku beneran ingin ngucap selamat ke dirimu. Anggap aja ini balasan dari ucapan ultahmu ke aku dulu 🕰"
           },
           {
             card:
-              "Fusce commodo nunc a accumsan vehicula. Aliquam ac tristique magna. Ut id libero ut turpis eleifend."
+              "Semoga dirimu makin cantik, makin sholeh, tinggi, mancung, makin manis, makin++. Hehe bercanda.... 🏃‍♀️"
           },
           {
             card:
-              "Integer erat justo, tincidunt non luctus eget, tempor vel lorem. Aliquam volutpat ultricies posuere."
+              "Semoga makin sukses ul tahun ini sampai kedepannya. Juga kedepannya dirimu bisa meraih impian yang belum sempat tercapai sebelumnya dan semoga juga hari-harimu menyenangkan di tahun-tahun berikutnya 👩‍🎓"
           },
           {
             card:
-              "Vestibulum dictum vitae magna eget lobortis. Aenean viverra, enim ut tincidunt volutpat, odio velit."
+              "Dulu waktu kenal dirimu, aku sungguh bahagia ul. Sampai nggak terasa kalau hari demi hari terlewati begitu saja. Desember 2019 - Desember 2021, bahkan dulu sempat ingin bertemu namun batal karena COVID 😷"
           },
           {
             card:
-              "Vivamus luctus orci pharetra, convallis dolor ac, vestibulum velit. Vestibulum aliquam nibh quis et."
+              "Mungkin sudah terlambat untuk kembali seperti dulu. Aku minta maaf dulu melakukan kesalahan yang fatal ke dirimu 🙏"
           },
           {
             card:
-              "Quisque vitae congue ligula. Aliquam vulputate suscipit dolor, in fringilla lectus condimentum duis."
-          }
+              "Semoga ull, dirimu tetap menjadi pribadi yang aku kenal dulu. Doaku akan selalu yang terbaik untukmu ♐♐♐"
+          },
+          {
+            card:
+              "Terima kasih ull pernah ngisi hari-hariku, makasih juga dulu pernah nasihatin aku, menyemangati saat down dll 🎭"
+          },
+          {
+            card:
+              `"ILYA"`
+          },
         ],
         bgCard:
           "https://gray-wwbt-prod.cdn.arcpublishing.com/resizer/9-QDoKyfV4H8F0abvgrXhJRqMos=/1200x1800/smart/filters:quality(85)/cloudfront-us-east-1.images.arcpublishing.com/gray/2BNPCSU4ENHWDCZLK4KJU2JC5A.jpg",
