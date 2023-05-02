@@ -42,11 +42,6 @@ const CreateCardPage = () => {
     forColorBox: "#000000",
     forColorText: "#ffffff",
     cards: [
-      { card: "" },
-      { card: "" },
-      { card: "" },
-      { card: "" },
-      { card: "" },
       { card: "" }
     ],
     bgCard: "",
@@ -109,9 +104,9 @@ const CreateCardPage = () => {
     let currentCount = formJSON.cards.length;
     currentCount = currentCount - 1;
     console.log(currentCount);
-    if (currentCount < 6) {
+    if (currentCount < 1) {
       toast({
-        description: "Cards should not less than 6",
+        description: "Cards should not less than 1",
         status: "error",
         duration: 3000,
         position: "top"
