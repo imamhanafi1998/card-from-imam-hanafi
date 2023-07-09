@@ -15,51 +15,87 @@ const CardPageForRina = () => {
         cards: [
           {
             card:
-              "Hey ull.... 👧"
+              "Hey rin.... 👧"
           },
           {
             card:
-              "Maaf nganggu kesibukanmu malam kali ini 🙏"
+              "Maaf ya imam nganggu kesibukanmu malam kali ini 🙏"
           },
           {
             card:
-              "Tidak ada yang ingin aku ucapkan selain selamat atas ulang tahunmu.... hari ini 🌙"
+              "Sorry ya rin nganggu Youtube-an mu 🙏"
           },
           {
             card:
-              "Selamat ulang tahun ya, teman lamakuu.... ✨🎉🎊"
+              "Sekarang tanggal 20 Juli kan ?🌙"
           },
           {
             card:
-              "Mungkin ini agak canggung, tapi aku beneran ingin ngucap selamat ke dirimu. Anggap aja ini balasan dari ucapan ultahmu ke aku dulu 🕰"
+              "Selamat ulang tahun ya, rina.... ✨🎉🎊"
           },
           {
             card:
-              "Semoga dirimu makin cantik, makin sholeh, tinggi, mancung, makin manis, makin++. Hehe bercanda.... 🏃‍♀️"
+              "Mungkin agak canggung 😅, tapi beneran aku ingin ngucap selamat ke dirimu"
           },
           {
             card:
-              "Semoga makin sukses ul tahun ini sampai kedepannya. Juga kedepannya dirimu bisa meraih impian yang belum sempat tercapai sebelumnya dan semoga juga hari-harimu menyenangkan di tahun-tahun berikutnya 👩‍🎓"
+              "Semoga dirimu makin lucu, imut, pinter, cerdas, makin manis, makin++ lah pokoknya. Hehe bercanda.... 🏃‍♀️"
           },
           {
             card:
-              "Dulu waktu kenal dirimu, aku sungguh bahagia ul. Sampai nggak terasa kalau hari demi hari terlewati begitu saja. Desember 2019 - Desember 2021, bahkan dulu sempat ingin bertemu namun batal karena COVID 😷"
+              "Semoga makin sukses rin tahun ini, tahun depan, sampai seterusnya 🤲"
+          },
+          {
+            card: 
+              "Aku berharap dirimu bisa meraih impian yang belum sempat tercapai sebelumnya 👩‍🎓"
+          },
+          {
+            card: 
+              "Semoga juga hari-harimu semangat, ceria, bahagia, mulai hari ini, besok dan seterusnya 👩‍🎓"
           },
           {
             card:
-              "Mungkin sudah terlambat untuk kembali seperti dulu. Aku minta maaf dulu melakukan kesalahan yang fatal ke dirimu 🙏"
+              "Semoga ya rin, dirimu tetap menjadi pribadi yang aku kenal dulu. Yang semangat sama hal-hal baru, antusias sama IT, pinter dll 🎓"
           },
           {
             card:
-              "Semoga ull, dirimu tetap menjadi pribadi yang aku kenal dulu. Doaku akan selalu yang terbaik untukmu ♐♐♐"
+              "Doaku semoga Rina Yulianti dikasih yang terbaik, dalam segala hal ♋♋♋"
           },
           {
             card:
-              "Terima kasih ull pernah ngisi hari-hariku, makasih juga dulu pernah nasihatin aku, menyemangati saat down dll 🎭"
+              "Sorry ya Rin, soal chatku WA terakhirmu yang aku bales singkat 🙏"
           },
           {
             card:
-              `"ILYA"`
+              "Aku gak bermaksud gitu, maaf Rin 🙏 Mungkin gara-gara aku, semua jadi beda sekarang 🙇‍♂️"
+          },
+          {
+            card:
+              "MAAF BANGET...."
+          },
+          {
+            card:
+              "Terima kasih Rin pernah ngisi hari-hariku, makasih juga pernah nasihatin aku, ngasih saran dll 🎭"
+          },
+          {
+            card:
+              "Kayake kalau gak gara-gara awakmu, mungkin aku masih nulis=nulis diary gak jelas di web 😁"
+          },
+          {
+            card:
+              "Iya Rin, aku bodoh emang. Sorry ya atas chatku yang terakhir 🙏 Nyesel aku"
+          },
+          {
+            card:
+              "Ini aja aku gak nge-WA dirimu soale takut dirimu masih gaenak sama aku"
+          },
+          {
+            card:
+              "Dahlah gausah mikirin aku, semangat ya kedepane. Semoga lancar semua kedepanmu. Amiin 🙏"
+          },
+          {
+            card:
+              `"Sincerely, -Imam Hanafi"`
           },
         ],
         bgCard:
