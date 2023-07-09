@@ -71,7 +71,7 @@ const CardPageForRina = () => {
           },
           {
             card:
-              "MAAF BANGET...."
+              "Maaf banget...."
           },
           {
             card:
@@ -79,7 +79,7 @@ const CardPageForRina = () => {
           },
           {
             card:
-              "Kayake kalau gak gara-gara awakmu, mungkin aku masih nulis=nulis diary gak jelas di web 😁"
+              "Kayake kalau gak gara-gara dirimu, mungkin aku masih nulis=nulis diary gak jelas di web 😁"
           },
           {
             card:
