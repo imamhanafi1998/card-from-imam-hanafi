@@ -193,6 +193,7 @@ const CardPageForRina = () => {
       >
         <Helmet>
           <title>{`Card For ${forWho}`}</title>
+          <meta name="description" content="Cards made with ♥ for brinaa_exo">
         </Helmet>
         {isDone &&
           props.map(({ x, y, rot, scale }, i) => (
