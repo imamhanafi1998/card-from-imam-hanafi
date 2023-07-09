@@ -15,7 +15,7 @@ const CardPageForRina = () => {
         cards: [
           {
             card:
-              "Hey rin.... 👧"
+              "Hey Rin.... 👧"
           },
           {
             card:
@@ -23,7 +23,7 @@ const CardPageForRina = () => {
           },
           {
             card:
-              "Sorry ya rin nganggu Youtube-an mu 🙏"
+              "Sorry ya Rin nganggu Youtube-an mu 🙏"
           },
           {
             card:
@@ -31,7 +31,7 @@ const CardPageForRina = () => {
           },
           {
             card:
-              "Selamat ulang tahun ya, rina.... ✨🎉🎊"
+              "Selamat ulang tahun ya, Rina.... ✨🎉🎊"
           },
           {
             card:
@@ -43,7 +43,7 @@ const CardPageForRina = () => {
           },
           {
             card:
-              "Semoga makin sukses rin tahun ini, tahun depan, sampai seterusnya 🤲"
+              "Semoga makin sukses Rin tahun ini, tahun depan, sampai seterusnya 🤲"
           },
           {
             card: 
@@ -55,7 +55,7 @@ const CardPageForRina = () => {
           },
           {
             card:
-              "Semoga ya rin, dirimu tetap menjadi pribadi yang aku kenal dulu. Yang semangat sama hal-hal baru, antusias sama IT, pinter dll 🎓"
+              "Semoga ya Rin aka brinaa_exo, dirimu tetap menjadi pribadi yang aku kenal dulu. Yang semangat sama hal-hal baru, antusias sama IT, pinter dll 🎓"
           },
           {
             card:
