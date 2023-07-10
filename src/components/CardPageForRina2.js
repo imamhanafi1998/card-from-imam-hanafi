@@ -138,12 +138,12 @@ const CardPageForRina2 = ({ match }) => {
         render: () => (
           <Center
             rounded="lg"
-            color={data.card.forColorText}
+            color={card.forColorText}
             p={2}
-            bg={data.card.forColorBox}
+            bg={card.forColorBox}
             shadow="dark-lg"
           >
-            <Text fontWeight="bold">{data.card.for}</Text>
+            <Text fontWeight="bold">{card.for}</Text>
           </Center>
         )
       });
