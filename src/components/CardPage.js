@@ -6,7 +6,7 @@ import "../styles/CardPageCss.css";
 import axios from "axios";
 import { Box, Center, Image, Text, Flex, useToast } from "@chakra-ui/react";
 import Page from "./Page";
-const CardPageForAulia = ({ match }) => {
+const CardPage = ({ match }) => {
   const getCardsDB = async () => {
     try {
       const { data } = await axios.get(
@@ -180,4 +180,4 @@ const CardPageForAulia = ({ match }) => {
   );
 };
 
-export default CardPageForAulia;
+export default CardPage;
