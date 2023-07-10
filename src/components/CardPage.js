@@ -25,8 +25,12 @@ const CardPageForAulia = ({ match }) => {
             backImg: data.card.bgImgConfig.backImg,
             backSize: data.card.bgImgConfig.backSize
           });
-      setIsDone(true);
-      setIsError(false);
+      setTimeout(() => {
+        setIsDone(true);
+        setIsError(false);
+      }, 3500);
+      // setIsDone(true);
+      // setIsError(false);
       toast({
         duration: 99999999999,
         isClosable: false,
