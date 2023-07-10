@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet";
 import { useSprings, animated, to as interpolate } from "react-spring";
 import { useGesture } from "react-use-gesture";
 import "../styles/CardPageCss.css";
-import { Box, Center, Text, useToast } from "@chakra-ui/react";
+import { Box, Center, Text, Image, useToast } from "@chakra-ui/react";
 import Page from "./Page";
 const CardPageForRina = () => {
   const getCardsDB = async () => {
