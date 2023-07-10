@@ -3,6 +3,7 @@ import CardPage from "./components/CardPage";
 import CreateCardPage from "./components/CreateCardPage";
 import CardPageForAulia from "./components/CardPageForAulia";
 import CardPageForRina from "./components/CardPageForRina";
+import CardPageForRina2 from "./components/CardPageForRina2";
 import UnknownPage from "./components/UnknownPage";
 
 import { Router, Route, Switch } from "react-router-dom";
@@ -37,6 +38,12 @@ const AppRoutes = [
     path: "/for-rina",
     name: "Card Page For Rina",
     Component: CardPageForRina,
+    exact: true
+  },
+  {
+    path: "/for-rina-2",
+    name: "Card Page For Rina",
+    Component: CardPageForRina2,
     exact: true
   },
   {
