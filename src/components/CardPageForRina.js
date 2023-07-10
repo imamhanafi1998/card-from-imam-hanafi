@@ -131,7 +131,10 @@ const CardPageForRina = () => {
       setOppacity(dataDummy.oppacity);
       setTextColor(dataDummy.textColor);
       setBgBox(dataDummy.bgBox);
-      setIsDone(true);
+      // setIsDone(true);
+      setTimeout(() => {
+        setIsDone(true);
+      }, 3500);
       toast({
         duration: 99999999999,
         isClosable: false,
@@ -231,7 +234,7 @@ const CardPageForRina = () => {
           <title>{`Card For ${forWho}`}</title>
           <meta name="description" content="Cards made with ♥ for brinaa_exo"></meta>
         </Helmet>
-        {isDone &&
+        {isDone ? (
           props.map(({ x, y, rot, scale }, i) => (
             <animated.div
               key={i}
@@ -258,7 +261,16 @@ const CardPageForRina = () => {
                 />
               </animated.div>
             </animated.div>
-          ))}
+          ))) : (
+            <Box className="card-container" bg="lightblue">
+              <Helmet>
+                <title>Loading Card 😏</title>
+              </Helmet>
+              <Center>
+                <Image src="https://raw.githubusercontent.com/gist/s-shivangi/7b54ec766cf446cafeb83882b590174d/raw/8957088c2e31dba6d72ce86c615cb3c7bb7f0b0c/nyan-cat.gif" />
+              </Center>
+            </Box>
+          )}
       </Box>
     </>
   );
