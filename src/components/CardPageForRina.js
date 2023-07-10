@@ -63,40 +63,40 @@ const CardPageForRina = ({ match }) => {
           },
           {
             card:
-              "Doaku semoga Rina Yulianti dikasih yang terbaik, dalam segala hal ♋♋♋"
+              "Doaku semoga Rina Yulianti dikasih yang terbaik, dalam segala hal ♋♋♋ Amiin"
           },
-          {
-            card:
-              "Sorry ya Rin, soal chatku WA terakhirmu yang aku bales singkat 🙏"
-          },
-          {
-            card:
-              "Aku gak bermaksud gitu, maaf Rin 🙏 Mungkin gara-gara aku, semua jadi beda sekarang 🙇‍♂️"
-          },
-          {
-            card:
-              "Maaf banget...."
-          },
-          {
-            card:
-              "Terima kasih Rin pernah ngisi hari-hariku, makasih juga pernah nasihatin aku, ngasih saran dll 🎭"
-          },
-          {
-            card:
-              "Kayake kalau gak gara-gara dirimu, mungkin aku masih nulis-nulis diary gak jelas di web 😁"
-          },
-          {
-            card:
-              "Iya Rin, aku bodoh emang. Sorry ya atas chatku yang terakhir 🙏 Nyesel aku"
-          },
-          {
-            card:
-              "Ini aja aku gak nge-WA dirimu soale takut dirimu masih gaenak sama aku"
-          },
-          {
-            card:
-              "Dahlah gausah mikirin aku, semangat ya kedepane. Semoga lancar semua kedepanmu. Amiin 🙏"
-          },
+          // {
+          //   card:
+          //     "Sorry ya Rin, soal chatku WA terakhirmu yang aku bales singkat 🙏"
+          // },
+          // {
+          //   card:
+          //     "Aku gak bermaksud gitu, maaf Rin 🙏 Mungkin gara-gara aku, semua jadi beda sekarang 🙇‍♂️"
+          // },
+          // {
+          //   card:
+          //     "Maaf banget...."
+          // },
+          // {
+          //   card:
+          //     "Terima kasih Rin pernah ngisi hari-hariku, makasih juga pernah nasihatin aku, ngasih saran dll 🎭"
+          // },
+          // {
+          //   card:
+          //     "Kayake kalau gak gara-gara dirimu, mungkin aku masih nulis-nulis diary gak jelas di web 😁"
+          // },
+          // {
+          //   card:
+          //     "Iya Rin, aku bodoh emang. Sorry ya atas chatku yang terakhir 🙏 Nyesel aku"
+          // },
+          // {
+          //   card:
+          //     "Ini aja aku gak nge-WA dirimu soale takut dirimu masih gaenak sama aku"
+          // },
+          // {
+          //   card:
+          //     "Dahlah gausah mikirin aku, semangat ya kedepane. Semoga lancar semua kedepanmu. Amiin 🙏"
+          // },
           {
             card:
               `"Sincerely, -Imam Hanafi"`
