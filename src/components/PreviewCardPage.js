@@ -132,7 +132,7 @@ const PreviewCardPage = ({ json, reversedCards }) => {
                 {...bindPreview(i)}
                 style={{
                   transform: interpolate([rot, scale], transPreview),
-                  borderRadius: "6%"
+                  borderRadius: "10px"
                 }}
               >
                 <Page
