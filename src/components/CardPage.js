@@ -19,7 +19,7 @@ const CardPage = ({ match }) => {
       setOppacity(data.card.oppacity);
       setTextColor(data.card.textColor);
       setBgBox(data.card.bgBox);
-      data.card.bgImgConfig.backImg === ""
+      data.card.bgSelect === "color"
         ? setBgCode(data.card.bgCode)
         : setBgImgConfig({
             backImg: data.card.bgImgConfig.backImg,
