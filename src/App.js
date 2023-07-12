@@ -28,12 +28,12 @@ const AppRoutes = [
     Component: CardPage,
     exact: true
   },
-  {
-    path: "/for-aulia",
-    name: "Card Page For Aulia",
-    Component: CardPageForAulia,
-    exact: true
-  },
+  // {
+  //   path: "/for-aulia",
+  //   name: "Card Page For Aulia",
+  //   Component: CardPageForAulia,
+  //   exact: true
+  // },
   {
     path: "/for-rina",
     name: "Card Page For Rina",
