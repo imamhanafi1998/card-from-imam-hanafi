@@ -13,7 +13,7 @@ const CardPageForRina = ({ match }) => {
       //   `https://elaborate-twilight-c60174.netlify.app/.netlify/functions/api/card/${match.params.someone}`
       // );
       const card = {
-        for: "Rina ✨🎉🎊",
+        for: "Rina Yulianti ✨🎉🎊",
         forColorBox: "lightblue",
         forColorText: "black",
         cards: [
@@ -110,9 +110,12 @@ const CardPageForRina = ({ match }) => {
         //   "https://img.freepik.com/free-vector/cute-astronaut-holding-space-board-cartoon-vector-icon-illustration-science-technology-icon-concept_138676-4336.jpg?w=360",
         oppacity: 1,
         bgImgConfig: {
+          // backImg:
+          //   "https://images.unsplash.com/photo-1618941240535-234c3212e3e7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bmlnaHQlMjB3YWxscGFwZXJ8ZW58MHx8MHx8&w=1000&q=80",
+          // backSize: "cover"
           backImg:
-            "https://images.unsplash.com/photo-1618941240535-234c3212e3e7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bmlnaHQlMjB3YWxscGFwZXJ8ZW58MHx8MHx8&w=1000&q=80",
-          backSize: "cover"
+            "https://www.textures4photoshop.com/tex/thumbs/animated-sparkle-overlay-for-photoshop-thumb38.gif",
+          backSize: "auto"
         },
         textColor: "#ffb84d",
         bgBox: "black"
