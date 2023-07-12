@@ -14,7 +14,8 @@ const CardPageForRina = ({ match }) => {
       // );
       const card = {
         for: "Rina Yulianti ✨🎉🎊",
-        forColorBox: "lightblue",
+        // forColorBox: "lightblue",
+        forColorBox: "lightpink",
         forColorText: "black",
         cards: [
           {
