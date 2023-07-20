@@ -24,11 +24,16 @@ const CardPageForRina = ({ match }) => {
           },
           {
             card:
-              "Maaf ya imam nganggu kesibukanmu malam kali ini 🙏"
+              "Maaf ya nganggu kesibukanmu malam kali ini 🙏"
           },
           {
             card:
               "Sorry ya Rin nganggu Youtube-an mu 🙏"
+          },
+          
+          {
+            card:
+              "Sorry juga Rin nganggu Game-an mu 🙏"
           },
           {
             card:
@@ -40,7 +45,7 @@ const CardPageForRina = ({ match }) => {
           },
           {
             card:
-              "Mungkin agak canggung 😅, tapi beneran aku ingin ngucap selamat ke dirimu"
+              "Mungkin kelihatan agak aneh 😅, tapi beneran aku ingin ngucap selamat ke dirimu"
           },
           {
             card:
@@ -65,6 +70,11 @@ const CardPageForRina = ({ match }) => {
           {
             card:
               "Doaku semoga Rina Yulianti dikasih yang terbaik, dalam segala hal ♋♋♋ Amiin"
+          },
+          
+          {
+            card:
+              "Semoga juga keterima kerja di Surabaya 🌟 Skripsinya lancar 🏫 Gak ada hambatan yang berarti, dimudahkan dll. Amiin.... Makasih ya dah jadi temenku selama ini hehe 😂"
           },
           // {
           //   card:
