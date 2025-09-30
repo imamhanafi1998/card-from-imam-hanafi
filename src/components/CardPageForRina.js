@@ -20,7 +20,7 @@ const CardPageForRina = ({ match }) => {
         cards: [
           {
             card:
-              "Hey Rin.... 👧"
+              "Heyyy Rinnn.... 👧"
           },
           {
             card:
